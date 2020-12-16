@@ -1,0 +1,10 @@
+<h1><%= @assignment.date %></h1>
+
+<div><%= @assignment.name %></div></br>
+
+<% @assignment.assignment_sections.each_with_index do |section, index| %>
+  <div><%= "Homework Part #{index + 1} / #{@assignment.assignment_sections.size}" %></div></br>
+  <div><%= section.instructions %></div></br>
+  <div><%= section.location %></div></br>
+  <div><%= section.related_urls %></div></br>
+<% end %>

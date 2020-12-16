@@ -1,0 +1,12 @@
+<h1>Add a new homework assignment</h1>
+
+<%= form_for @assignment do |f| %>
+  Class* : <%= f.collection_select :course, @courses, :id, :name, include_blank: true %><br />
+  Date* : <%= f.text_field :date, { value: "#{Date.today}" } %><br />
+  <%= f.fields_for @assignment_section do |ff| %>
+    Instructions : <%= ff.text_area :instructions %><br />
+    Where? : <%= ff.text_field :location %><br />
+    Related Links : <%= ff.text_field :related_urls %><br />
+  <% end %> 
+  <%= f.submit "Save Assignment" %>
+<% end %>

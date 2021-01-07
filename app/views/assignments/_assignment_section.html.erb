@@ -1,0 +1,5 @@
+<%= form.fields_for @assignment_section do |f| %>
+  Instructions : <%= f.text_area :instructions, placeholder: "What is the assignment?" %><br />
+  Where? : <%= f.text_field :location, placeholder: "e.g. Workbook pg. 10" %><br />
+  Related Links : <%= f.text_field :related_urls, placeholder: "A video or an external resource" %><br />
+<% end %> 

@@ -1,5 +1,5 @@
 <h1><%= @course.name %></h1>
 
 <% @assignments.each do |assignment| %>
-  <%= link_to "#{assignment.date}", assignment_path(assignment) %></br>
+  <%= link_to assignment.date.strftime('%B %d, %Y'), assignment_path(assignment) %></br>
 <% end %>

@@ -7,5 +7,5 @@ section.addEventListener('click', (e) => {
   var container = document.getElementById('sections-container');
   newNode.innerHTML = e.target.dataset.fields;
 
-  container.after(newNode);
+  container.innerHTML += newNode.innerHTML;
 });

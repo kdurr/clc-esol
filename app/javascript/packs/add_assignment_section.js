@@ -5,7 +5,7 @@ section.addEventListener('click', (e) => {
 
   var newNode = document.createElement('div');
   var container = document.getElementById('sections-container');
-  newNode.innerHTML = e.target.dataset.fields;
+  newNode.innerHTML = e.target.dataset.fields.replace('id="0"', 'id="' + container.children.length + '"');
 
   container.innerHTML += newNode.innerHTML;
 });

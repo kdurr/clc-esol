@@ -6,13 +6,19 @@ class AssignmentsController < ApplicationController
   def new
     @courses = Course.is_active.order(:name)
     @assignment = Assignment.new
-    @assignment_section = AssignmentSection.new
+    @assignment_sections = @assignment.assignment_sections.build
   end
 
   def create
-    assignment = Assignment.new(course_id: assignment_params[:course].to_i, date: Date.parse(assignment_params[:date]))
+    byebug
+    assignment = Assignment.new(
+      course_id: assignment_params[:course].to_i,
+      date: Date.parse(assignment_params[:date]),
+      assignment_sections: assignment_params[:assignment_sections_attributes].values
+    )
+    byebug
     if assignment.save!
-      sections = assignment.assignment_sections.new(assignment_params[:assignment_section])
+      sections = assignment.assignment_sections.new(assignment_params[:assignment_sections_attributes])
 
       if sections.save!
         redirect_to admins_path
@@ -32,7 +38,7 @@ class AssignmentsController < ApplicationController
     params.require(:assignment).permit(
       :course,
       :date,
-      assignment_section: [:instructions, :location, :related_urls]
+      assignment_sections_attributes: [:id, :instructions, :location, :related_urls]
     )
   end
 end
